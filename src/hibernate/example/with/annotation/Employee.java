@@ -1,16 +1,26 @@
-package hibernate.example;
+package hibernate.example.with.annotation;
 
-//"Entity"
-//@Table (name = "Employee")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Employee")
 public class Employee {
-//	
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.Auto)
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String firstName;
-	private String lastName;
 
+	@Column(name="FIRSTNAME")
+	private String firstName;
+
+	@Column(name = "LASTNAME")
+	private String lastName;
+  
 	public int getId() {
 		return id;
 	}
@@ -34,7 +44,7 @@ public class Employee {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	 @Override
 	  public String toString () {
 
@@ -43,6 +53,5 @@ public class Employee {
 	        ", firstName='" + firstName + '\'' +
 	        ", lastName='" + lastName + '\'' +
 	        '}';
-	  }	
-
+	  }
 }
